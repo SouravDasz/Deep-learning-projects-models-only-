@@ -61,7 +61,7 @@ with torch.no_grad():
 
 
 
-2️⃣ Question Answering Model (RNN Based)
+#2️⃣ Question Answering Model (RNN Based)
 Overview
 
 This project implements a Question Answering model using Recurrent Neural Networks (RNN).
