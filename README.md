@@ -61,26 +61,29 @@ with torch.no_grad():
 
 
 
-#2️⃣ Question Answering Model (RNN Based)
-Overview
+# 2️⃣ Question Answering Model (RNN Based)
 
-This project implements a Question Answering model using Recurrent Neural Networks (RNN).
-The model learns relationships between questions and answers and predicts the correct answer based on the input question.
+## Overview
+This project implements a **Question Answering model using Recurrent Neural Networks (RNN)**.  
+The model learns relationships between **questions and answers** and predicts the correct answer based on the input question.
 
-It uses word embeddings and sequence modeling to understand the context of the question.
+It uses **word embeddings** and **sequence modeling** to understand the context of the question.
 
-Model Architecture
+---
 
-Embedding Layer – Converts word indices into dense vectors.
+## Model Architecture
 
-RNN Layer – Captures sequential dependencies in the question.
+- **Embedding Layer** – Converts word indices into dense vectors.
+- **RNN Layer** – Captures sequential dependencies in the question.
+- **Fully Connected Layer** – Predicts the most probable answer from the vocabulary.
 
-Fully Connected Layer – Predicts the most probable answer from the vocabulary.
+---
 
-Key Features
+## Key Features
 
-Custom vocabulary and tokenization pipeline
-
+- Custom **vocabulary and tokenization pipeline**
+- Implemented entirely in **PyTorch**
+- Uses **CrossEntropyLoss** for multi-class answer prediction
 Implemented completely in PyTorch
 
 Uses CrossEntropyLoss for multi-class answer prediction
