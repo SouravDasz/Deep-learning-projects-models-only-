@@ -54,8 +54,7 @@ with torch.no_grad():
     output = model(img_tensor)
     _, predicted = torch.max(output, 1)
 
-    print("Predicted class:", "Dog" if predicted.item() == 1 else "Cat")
-
+    print("Predicted class:", "Dog" if predicted.item() == 1 else "Cat")```
 
 
 
