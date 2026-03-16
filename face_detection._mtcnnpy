@@ -1,0 +1,52 @@
+from mtcnn import MTCNN
+import cv2
+
+cap = cv2.VideoCapture(0)
+model = MTCNN()
+
+while True:
+
+    ret, frame = cap.read()
+    if not ret or frame is None:
+        continue
+
+    try:
+        results = model.detect_faces(frame)
+    except Exception:
+        results = []
+
+    for face in results:
+
+        x, y, w, h = face['box']
+        conf = face['confidence']
+
+        keypoints = face["keypoints"]
+        left_eye = keypoints["left_eye"]
+        right_eye = keypoints["right_eye"]
+        mouth_left = keypoints["mouth_left"]
+        mouth_right = keypoints["mouth_right"]
+
+        cv2.rectangle(frame,(x,y),(x+w,y+h),(0,0,255),2)
+
+        cv2.circle(frame, left_eye, 2, (0,0,255), 2)
+        cv2.circle(frame, right_eye, 2, (0,0,255), 2)
+        cv2.circle(frame, mouth_left, 2, (0,0,255), 2)
+        cv2.circle(frame, mouth_right, 2, (0,0,255), 2)
+
+        cv2.putText(
+            frame,
+            f"{conf*100:.1f}%",
+            (x,max(y-5,10)),
+            cv2.FONT_HERSHEY_SIMPLEX,
+            0.4,
+            (0,0,255),
+            1
+        )
+
+    cv2.imshow("Face Detection", frame)
+
+    if cv2.waitKey(1) & 0xFF == ord("q"):
+        break
+
+cap.release()
+cv2.destroyAllWindows()
